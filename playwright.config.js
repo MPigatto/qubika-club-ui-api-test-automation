@@ -1,36 +1,35 @@
-// @ts-check
 import { defineConfig, devices } from "@playwright/test";
+import { CONFIG } from "./config/config.js";
 
 export default defineConfig({
   testDir: "./tests",
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+
   reporter: "html",
 
   use: {
     trace: "on-first-retry",
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
   },
 
   projects: [
-    // API tests (no browser)
     {
       name: "api",
       testMatch: /api\/.*\.spec\.js/,
       use: {
-        baseURL: process.env.API_BASE_URL,
+        baseURL: CONFIG.API_BASE_URL,
       },
     },
-
-    // UI tests - Chromium
     {
       name: "ui-chromium",
       testMatch: /ui\/.*\.spec\.js/,
       use: {
         ...devices["Desktop Chrome"],
-        baseURL: process.env.UI_BASE_URL,
+        baseURL: CONFIG.UI_BASE_URL,
+        storageState: "storageState.json",
       },
     },
   ],
+
+  globalSetup: "./config/global-setup.js",
 });
