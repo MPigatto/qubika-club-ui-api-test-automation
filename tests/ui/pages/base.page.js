@@ -2,7 +2,7 @@ import { Page, Locator } from "@playwright/test";
 
 export class BasePage {
   constructor(page) {
-    this.page = Page;
+    this.page = page;
   }
   async navigate(url) {
     await this.page.goto(url);
@@ -24,4 +24,4 @@ export class BasePage {
     await this.page.locator(locator).waitFor({ state: "visible" });
   }
 }
-module.exports = BasePage;
+export default BasePage;

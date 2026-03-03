@@ -1,7 +1,7 @@
 import { chromium } from "@playwright/test";
 import { CONFIG } from "./config.js";
 
-//Log in before each test
+//Logs in once before the test suite runs
 async function globalSetup() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
@@ -11,7 +11,7 @@ async function globalSetup() {
   await page.fill("#password", CONFIG.CREDENTIALS.PASSWORD);
   await page.click("#login");
 
-  await page.context().storageState({ path: "storageState.json" });
+  await page.context().storageState({ path: "playwright/.auth/user.json" });
   await browser.close();
 }
 

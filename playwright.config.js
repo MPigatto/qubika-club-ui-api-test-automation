@@ -26,7 +26,7 @@ export default defineConfig({
       use: {
         ...devices["Desktop Chrome"],
         baseURL: CONFIG.UI_BASE_URL,
-        storageState: "storageState.json",
+        storageState: "playwright/.auth/user.json",
       },
     },
   ],
