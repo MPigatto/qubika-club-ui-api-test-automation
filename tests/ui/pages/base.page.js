@@ -1,5 +1,3 @@
-import { Page, Locator } from "@playwright/test";
-
 export class BasePage {
   constructor(page) {
     this.page = page;
