@@ -1,6 +1,6 @@
 export const CONFIG = {
-  UI_BASE_URL: "https://staging.example.com",
-  API_BASE_URL: "https://api.staging.example.com",
+  UI_BASE_URL: "https://club-administration.qa.qubika.com",
+  API_BASE_URL: "https://api.club-administration.qa.qubika.com",
 
   CREDENTIALS: {
     USERNAME: "test_user",
